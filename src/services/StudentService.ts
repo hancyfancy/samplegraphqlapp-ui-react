@@ -9,6 +9,6 @@ export const bookAndCollegeDetails = async (query: BookAndCollegeQuery): Promise
         }), 
         body: JSON.stringify(query, (_, v) => typeof v === 'bigint' ? v.toString() : v)
     });
-    const responseJson = await response.json();
+    const responseJson = await response.text();
     return JSON.parse(responseJson);
 };

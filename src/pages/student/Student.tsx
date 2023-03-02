@@ -4,10 +4,13 @@ import { BookAndCollegeDetails } from "../../models/BookAndCollegeDetails";
 const Student = () => {
     const {bookAndCollegeDets, callBookAndCollegeDetails} = useStudentService();
 
-    
+    const getBookAndCollegeDetails = (studentFirstName: string, studentId: string): BookAndCollegeDetails => {
+        callBookAndCollegeDetails({ studentFirstName, studentId });
+        return bookAndCollegeDets!;
+    };
 
     return <div>
-        Hello
+        {JSON.stringify(getBookAndCollegeDetails("Kiran", "S1001"))}
     </div>;
 }
 
