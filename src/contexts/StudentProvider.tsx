@@ -1,7 +1,8 @@
 import { createContext, useState, useMemo, useContext } from "react";
 import { BookAndCollegeDetails } from "../models/BookAndCollegeDetails";
 import { BookAndCollegeQuery } from "../models/BookAndCollegeQuery";
-import { bookAndCollegeDetails } from "../services/StudentService";
+import { CollegeStudent } from "../models/CollegeStudent";
+import { bookAndCollegeDetails, students } from "../services/StudentService";
 
 interface IStudentContext {
     bookAndCollegeDets: BookAndCollegeDetails | undefined;
@@ -10,6 +11,8 @@ interface IStudentContext {
     newFirstName: (nFristName: string) => void;
     id: string;
     newId: (nId: string) => void;
+    studnts: CollegeStudent[] | undefined;
+    callStudents: () => Promise<void>;
 }
 
 const StudentContext = createContext<IStudentContext | undefined>(undefined);
@@ -18,6 +21,7 @@ export const StudentProvider = ({ children } : {children: JSX.Element | JSX.Elem
     const [bookAndCollegeDets, setbookAndCollegeDets] = useState<BookAndCollegeDetails | undefined>(undefined);
     const [firstName, setFirstName] = useState("");
     const [id, setId] = useState("");
+    const [studnts, setStudnts] = useState<CollegeStudent[] | undefined>(undefined);
 
     const value = useMemo(
         () => ({ 
@@ -33,9 +37,14 @@ export const StudentProvider = ({ children } : {children: JSX.Element | JSX.Elem
             id: id,
             newId: (nId: string): void => {
                 setId(nId);
+            },
+            studnts: studnts,
+            callStudents: async (): Promise<void> => {
+                await students()
+                .then((data) => {setStudnts(data);});
             }
         }), 
-        [bookAndCollegeDets, firstName, id]
+        [bookAndCollegeDets, firstName, id, studnts]
     );
 
     return (
