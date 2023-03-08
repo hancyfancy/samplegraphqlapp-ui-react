@@ -97,7 +97,7 @@ const StudentList = () => {
                                                         <span>{elem.author}</span>
                                                     </div>
                                                  </li>
-                                            })};
+                                            })}
                                         </ul>
                                     </div>
                                     : <></>}
