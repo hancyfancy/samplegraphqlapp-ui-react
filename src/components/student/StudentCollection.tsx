@@ -11,12 +11,29 @@ const StudentCollection = () => {
         callStudents();
     }, []);
 
+    const captionStyle = {
+        fontSize: "70px",
+        fontWeight: "600",
+        color: "#b393d3",
+        textShadow: "1px 1px 0px #957dad, 1px 2px 0px #957dad, 1px 3px 0px #957dad, 1px 4px 0px #957dad, 1px 5px 0px #957dad, 1px 6px 0px #957dad, 1px 10px 5px rgba(16, 16, 16, 0.5), 1px 15px 10px rgba(16, 16, 16, 0.4), 1px 20px 30px rgba(16, 16, 16, 0.3), 1px 25px 50px rgba(16, 16, 16, 0.2)",
+        textAlign: "center" as const,
+        textTransform: "uppercase" as const
+    };
+
+    const headerStyle = {
+        paddingTop: "12px",
+        paddingBottom: "12px",
+        backgroundColor: "#04AA6D",
+        color: "white",
+        textAlign: "left" as const
+    };
+
     const getStudentsDetails = (e: React.MouseEvent<HTMLInputElement>) => {
         e.preventDefault();
         setTable(studnts !== undefined
             ? <table>
-                <caption>Students</caption>
-                <thead>
+                <caption style={captionStyle}>Students</caption>
+                <thead style={headerStyle}>
                     <tr>
                         <th>FirstName</th>
                         <th>LastName</th>
@@ -46,8 +63,8 @@ const StudentCollection = () => {
         e.preventDefault();
         setTable(books !== undefined
             ? <table>
-                <caption>Books</caption>
-                <thead>
+                <caption style={captionStyle}>Books</caption>
+                <thead style={headerStyle}>
                     <tr>
                         <th>Name</th>
                         <th>Author</th>
@@ -79,8 +96,8 @@ const StudentCollection = () => {
         e.preventDefault();
         setTable(collegeBooks !== undefined
             ? <table>
-                <caption>College</caption>
-                <thead>
+                <caption style={captionStyle}>College</caption>
+                <thead style={headerStyle}>
                     <tr>
                         <th>Name</th>
                         <th>Location</th>
@@ -117,8 +134,8 @@ const StudentCollection = () => {
     useEffect(() => {
         setTable(studnts !== undefined
             ? <table>
-                <caption>Students</caption>
-                <thead>
+                <caption style={captionStyle}>Students</caption>
+                <thead style={headerStyle}>
                     <tr>
                         <th>FirstName</th>
                         <th>LastName</th>
