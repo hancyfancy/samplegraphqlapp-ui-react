@@ -84,9 +84,13 @@ const StudentList = () => {
         transition: "0.4s"
     };
 
+    const listStyle = {
+        listStyleType: "none"
+    };
+
     useEffect(() => {
         setList(studnts !== undefined
-            ? <ul>
+            ? <ul style={listStyle}>
                 {studnts!.map((elem, index) => {
                     return <li key={elem.id}>
                        <input
@@ -112,7 +116,7 @@ const StudentList = () => {
                         </div>
                         {elem.college !== undefined
                         ? <div className="toggle">
-                            <ul>
+                            <ul style={listStyle}>
                                 <li key={elem.college.id}>
                                     <input
                                         type="button"
@@ -137,7 +141,7 @@ const StudentList = () => {
                                     </div>
                                     {elem.college.books !== undefined
                                     ? <div className="toggle">
-                                        <ul>
+                                        <ul style={listStyle}>
                                             {elem.college.books!.map((elem, index) => {
                                                 return <li key={elem.id}>
                                                     <input
