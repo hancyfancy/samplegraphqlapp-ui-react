@@ -38,6 +38,52 @@ const StudentList = () => {
         selectListItem(eventTarget);
     };
 
+    const toggleInfoFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+        e.preventDefault();
+        const eventTarget = e.target as HTMLInputElement;
+        eventTarget.style.color = "#777";
+        eventTarget.style.fontWeight = "bold";
+    };
+
+    const toggleInfoBlur = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+        e.preventDefault();
+        const eventTarget = e.target as HTMLInputElement;
+        eventTarget.style.color = "#444";
+        eventTarget.style.fontWeight = "normal";
+    };
+
+    const enterButton = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+        e.preventDefault();
+        const eventTarget = e.target as HTMLInputElement;
+        eventTarget.style.backgroundColor = "#ccc";
+    };
+
+    const leaveButton = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+        e.preventDefault();
+        const eventTarget = e.target as HTMLInputElement;
+        eventTarget.style.backgroundColor = "#eee";
+        eventTarget.style.color = "#444";
+        eventTarget.style.cursor = "pointer";
+        eventTarget.style.padding = "18px";
+        eventTarget.style.border = "none";
+        eventTarget.style.textAlign = "left" as const;
+        eventTarget.style.outline = "none";
+        eventTarget.style.fontSize = "15px";
+        eventTarget.style.transition = "0.4s";
+    };
+
+    const buttonStyle = {
+        backgroundColor: "#eee",
+        color: "#444",
+        cursor: "pointer",
+        padding: "18px",
+        border: "none",
+        textAlign: "left" as const,
+        outline: "none",
+        fontSize: "15px",
+        transition: "0.4s"
+    };
+
     useEffect(() => {
         setList(studnts !== undefined
             ? <ul>
@@ -45,7 +91,12 @@ const StudentList = () => {
                     return <li key={elem.id}>
                        <input
                             type="button"
+                            onMouseEnter={(e) => enterButton(e)}
+                            onMouseLeave={(e) => leaveButton(e)}
+                            onFocus={(e) => toggleInfoFocus(e)}
+                            onBlur={(e) => toggleInfoBlur(e)}
                             onClick={(e) => toggleInfo(e)}
+                            style={buttonStyle}
                             value={"Student " + (index+1).toString()}/>
                         <div hidden className="toggle">
                             <span>First name: </span>
@@ -65,7 +116,12 @@ const StudentList = () => {
                                 <li key={elem.college.id}>
                                     <input
                                         type="button"
+                                        onMouseEnter={(e) => enterButton(e)}
+                                        onMouseLeave={(e) => leaveButton(e)}
+                                        onFocus={(e) => toggleInfoFocus(e)}
+                                        onBlur={(e) => toggleInfoBlur(e)}
                                         onClick={(e) => toggleInfo(e)}
+                                        style={buttonStyle}
                                         value={"College for student " + (index+1).toString()}/>
                                     <div hidden className="toggle">
                                         <span>Name: </span>
@@ -86,7 +142,12 @@ const StudentList = () => {
                                                 return <li key={elem.id}>
                                                     <input
                                                         type="button"
+                                                        onMouseEnter={(e) => enterButton(e)}
+                                                        onMouseLeave={(e) => leaveButton(e)}
+                                                        onFocus={(e) => toggleInfoFocus(e)}
+                                                        onBlur={(e) => toggleInfoBlur(e)}
                                                         onClick={(e) => toggleInfo(e)}
+                                                        style={buttonStyle}
                                                         value={"Book " + (index+1).toString()}/>
                                                     <div hidden className="toggle">
                                                         <span>First name: </span>
