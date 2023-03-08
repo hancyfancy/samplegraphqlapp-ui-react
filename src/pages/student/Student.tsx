@@ -3,6 +3,7 @@ import BookAndCollegeDetailsView from "../../components/student/BookAndCollegeDe
 import FirstNameInput from "../../components/student/FirstNameInput";
 import IdInput from "../../components/student/IdInput";
 import StudentCollection from "../../components/student/StudentCollection";
+import StudentList from "../../components/student/StudentList";
 
 const Student = () => {
     return <div>
@@ -15,6 +16,8 @@ const Student = () => {
         <BookAndCollegeDetailsView></BookAndCollegeDetailsView>
 
         <StudentCollection></StudentCollection>
+
+        <StudentList></StudentList>
     </div>;
 }
 
