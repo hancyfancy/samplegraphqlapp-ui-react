@@ -115,7 +115,7 @@ const StudentList = () => {
                             <span>{elem.email}</span>
                         </div>
                         {elem.college !== undefined
-                        ? <div className="toggle">
+                        ? <div hidden className="toggle">
                             <ul style={listStyle}>
                                 <li key={elem.college.id}>
                                     <input
@@ -140,7 +140,7 @@ const StudentList = () => {
                                         <span>{elem.college.rating}</span>
                                     </div>
                                     {elem.college.books !== undefined
-                                    ? <div className="toggle">
+                                    ? <div hidden className="toggle">
                                         <ul style={listStyle}>
                                             {elem.college.books!.map((elem, index) => {
                                                 return <li key={elem.id}>
