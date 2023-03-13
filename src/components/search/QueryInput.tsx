@@ -36,7 +36,7 @@ const QueryInput = () => {
             }
             else {
                 if (queryLowerCase === "id") {
-                    e.target.value = query + " = ";
+                    e.target.value = query + " equals ";
                 }
                 else {
                     e.target.value = query + " contains ";
