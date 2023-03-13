@@ -5,4 +5,4 @@ export interface College {
     rating: number
 }
 
-export const CollegeProperties = ["id", "name", "location", "rating"];
+export const CollegeProperties = ["Id", "Name", "Location", "Rating"];

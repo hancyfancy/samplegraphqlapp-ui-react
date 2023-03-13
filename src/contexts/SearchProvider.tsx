@@ -7,21 +7,28 @@ import { bookAndCollegeDetails, students } from "../services/StudentService";
 interface ISearchContext {
     selectedEntity: string;
     newSelectedEntity: (nSelectedEntity: string) => void;
+    selectedProperty: string;
+    newSelectedProperty: (nSelectedProperty: string) => void;
 }
 
 const SearchContext = createContext<ISearchContext | undefined>(undefined);
 
 export const SearchProvider = ({ children } : {children: JSX.Element | JSX.Element[]}) => {
     const [entity, setEntity] = useState("Student");
+    const [property, setProperty] = useState("Id");
 
     const value = useMemo(
         () => ({ 
             selectedEntity: entity,
             newSelectedEntity: (nSelectedEntity: string): void => {
                 setEntity(nSelectedEntity);
+            },
+            selectedProperty: property,
+            newSelectedProperty: (nSelectedProperty: string): void => {
+                setProperty(nSelectedProperty);
             }
         }), 
-        [entity]
+        [entity, property]
     );
 
     return (
