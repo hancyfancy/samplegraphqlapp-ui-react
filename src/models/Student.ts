@@ -4,3 +4,5 @@ export interface Student {
     lastName: string,
     email: string
 }
+
+export const StudentProperties = ["id", "firstName", "lastName", "email"];

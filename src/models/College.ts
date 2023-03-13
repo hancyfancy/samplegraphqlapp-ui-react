@@ -4,3 +4,5 @@ export interface College {
     location: string,
     rating: number
 }
+
+export const CollegeProperties = ["id", "name", "location", "rating"];

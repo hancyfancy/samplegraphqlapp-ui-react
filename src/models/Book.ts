@@ -3,3 +3,5 @@ export interface Book {
     name: string,
     author: string
 }
+
+export const BookProperties = ["id", "name", "author"];
