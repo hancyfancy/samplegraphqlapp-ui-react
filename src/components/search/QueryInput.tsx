@@ -72,6 +72,7 @@ const QueryInput = () => {
         value={searchQuery}
         onChange={update}
         onKeyUp={keyPressed}
+        placeholder={independentQueries.join(" | ")}
     />;
 }
 
