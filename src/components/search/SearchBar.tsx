@@ -1,12 +1,13 @@
 import EntitySelect from "./EntitySelect";
 import PropertySelect from "./PropertySelect";
+import QueryInput from "./QueryInput";
 
 const SearchBar = () => {
     
     return <>
         <EntitySelect></EntitySelect>
 
-        <PropertySelect></PropertySelect>
+        <QueryInput></QueryInput>
     </>;
 }
 

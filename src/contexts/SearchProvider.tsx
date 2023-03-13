@@ -9,6 +9,8 @@ interface ISearchContext {
     newSelectedEntity: (nSelectedEntity: string) => void;
     selectedProperty: string;
     newSelectedProperty: (nSelectedProperty: string) => void;
+    searchQuery: string;
+    newSearchQuery: (nSearchQuery: string) => void;
 }
 
 const SearchContext = createContext<ISearchContext | undefined>(undefined);
@@ -16,6 +18,7 @@ const SearchContext = createContext<ISearchContext | undefined>(undefined);
 export const SearchProvider = ({ children } : {children: JSX.Element | JSX.Element[]}) => {
     const [entity, setEntity] = useState("Student");
     const [property, setProperty] = useState("Id");
+    const [search, setSearch] = useState("");
 
     const value = useMemo(
         () => ({ 
@@ -26,9 +29,13 @@ export const SearchProvider = ({ children } : {children: JSX.Element | JSX.Eleme
             selectedProperty: property,
             newSelectedProperty: (nSelectedProperty: string): void => {
                 setProperty(nSelectedProperty);
+            },
+            searchQuery: search,
+            newSearchQuery: (nSearchQuery: string): void => {
+                setSearch(nSearchQuery);
             }
         }), 
-        [entity, property]
+        [entity, property, search]
     );
 
     return (
