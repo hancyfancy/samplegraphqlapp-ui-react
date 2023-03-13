@@ -47,7 +47,7 @@ const QueryInput = () => {
         newSearchQuery(e.target.value);
     };
 
-    const commaPressed = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const keyPressed = (e: React.KeyboardEvent<HTMLInputElement>) => {
         e.preventDefault();
         const key = e.key;
         if (key === ",") {
@@ -57,13 +57,21 @@ const QueryInput = () => {
             }
             newSearchQuery("");
         }
+        else if (key === "Enter") {
+            search();
+        }
+    };
+
+    const search = () => {
+        newSearchQuery(independentQueries.join(","));
+        //call endpoint
     };
 
     return <input
         type="text"
         value={searchQuery}
         onChange={update}
-        onKeyUp={commaPressed}
+        onKeyUp={keyPressed}
     />;
 }
 
